@@ -50,7 +50,8 @@ export const CustomSidebarPhoto: QuartzTransformerPlugin = () => ({
             image.height = 180;
             image.loading = "lazy";
             frame.appendChild(image);
-            explorer.insertAdjacentElement("afterend", frame);
+            const anchor = document.querySelector(".sidebar.left .graph") || explorer;
+            anchor.insertAdjacentElement("afterend", frame);
           }
           showSidebarPhoto();
           document.addEventListener("nav", showSidebarPhoto);

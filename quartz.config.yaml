@@ -165,8 +165,9 @@ plugins:
   - source: "@quartz-community/graph"
     enabled: true
     layout:
-      position: right
-      priority: 10
+      position: left
+      priority: 60
+      display: desktop-only
   - source: "@quartz-community/search"
     enabled: true
     layout:

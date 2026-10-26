@@ -75,3 +75,28 @@ $article-list-item-gap: 1.5rem;
   padding-block-start: 0;
   margin-block-start: 0;
 }
+
+// 左にGraph Viewを集約し、右サイドバーの列を本文に使います。
+.page > #quartz-body > .sidebar.right {
+  display: none;
+}
+
+@media (min-width: 801px) {
+  .page > #quartz-body {
+    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header"
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-footer";
+  }
+
+  .page > #quartz-body > .sidebar.left {
+    overflow-y: auto;
+
+    > .explorer,
+    > .graph {
+      flex-shrink: 0;
+    }
+  }
+}
