@@ -113,14 +113,31 @@ export const CustomSidebarMenu: QuartzTransformerPlugin = () => ({
           position: static; width: 100%; max-width: 100%; height: auto; max-height: none;
           transform: none; visibility: visible; padding: 0; overflow: visible;
         }
+        /* 本文のラッパーを中央列に固定。サイドバーをfixedにしても自動配置させません。 */
+        html.sidebar-menu-ready .page > #quartz-body > .center {
+          grid-column: 2;
+          grid-row: 1 / 3;
+          min-width: 0;
+          width: 100%;
+        }
+        html.sidebar-menu-ready .page > #quartz-body > footer {
+          grid-column: 2;
+          grid-row: 3;
+        }
         @media (max-width: 1200px) {
           html.sidebar-menu-ready .page > #quartz-body {
             grid-template-columns: minmax(0, 850px); justify-content: center;
             grid-template-areas: "grid-header" "grid-center" "grid-footer";
           }
         }
+        @media (max-width: 1200px) {
+          html.sidebar-menu-ready .page > #quartz-body > .center,
+          html.sidebar-menu-ready .page > #quartz-body > footer {
+            grid-column: 1;
+          }
+        }
         @media (max-width: 800px) {
-          html.sidebar-menu-ready .page > #quartz-body > .page-header { margin-top: 80px; }
+          html.sidebar-menu-ready .page > #quartz-body > .center > .page-header { margin-top: 80px; }
         }
       ` }],
     }
