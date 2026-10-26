@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: 舘野光洋
+  pageTitle: 舘野光洋の記録
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
