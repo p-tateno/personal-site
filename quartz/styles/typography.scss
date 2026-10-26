@@ -76,21 +76,12 @@ $article-list-item-gap: 1.5rem;
   margin-block-start: 0;
 }
 
-// 左にGraph Viewを集約し、右サイドバーの列を本文に使います。
+// 右サイドバーの機能は非表示にします。
 .page > #quartz-body > .sidebar.right {
   display: none;
 }
 
 @media (min-width: 801px) {
-  .page > #quartz-body {
-    grid-template-columns: 320px minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "grid-sidebar-left grid-header"
-      "grid-sidebar-left grid-center"
-      "grid-sidebar-left grid-footer";
-  }
-
   .page > #quartz-body > .sidebar.left {
     overflow-y: auto;
 
@@ -109,4 +100,27 @@ html[saved-theme="light"] body .sidebar.left .graph > .graph-outer {
 // 記事タイトルはテーマの基準サイズから20%拡大します。
 html body .center h1.article-title {
   font-size: calc(var(--inline-title-size, 1.75rem) * 1.2);
+}
+
+// 広い画面では左右に同じ幅を確保し、本文をウィンドウ中央に配置します。
+// 右の列は空白のまま残し、本文幅を元の3列レイアウトに戻します。
+@media (min-width: 1201px) {
+  .page > #quartz-body {
+    grid-template-columns: 320px minmax(0, 1fr) 320px;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header grid-sidebar-right"
+      "grid-sidebar-left grid-center grid-sidebar-right"
+      "grid-sidebar-left grid-footer grid-sidebar-right";
+  }
+}
+
+// ライトモードではサイドバーと外側の余白を白に統一します。
+html[saved-theme="light"] body,
+html[saved-theme="light"] body #quartz-root.page,
+html[saved-theme="light"] body #quartz-root.page > #quartz-body,
+html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar,
+html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar.left:has(.explorer),
+html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar.left .explorer-content {
+  background-color: #fff;
 }
