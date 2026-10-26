@@ -100,3 +100,8 @@ $article-list-item-gap: 1.5rem;
     }
   }
 }
+
+// Graph Viewの背景：白とサイドバーの背景色を半分ずつ混ぜます。
+html[saved-theme="light"] body .sidebar.left .graph > .graph-outer {
+  background-color: color-mix(in srgb, #fff 50%, var(--tab-container-background, #f6f6f6) 50%);
+}
