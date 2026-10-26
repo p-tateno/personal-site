@@ -1,5 +1,5 @@
 ---
-title: 舘野光洋の記録
+title: 舘野光洋です
 pageTitle: 舘野光洋のページ
 created: 2026-10-26
 ---
