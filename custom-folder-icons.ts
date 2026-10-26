@@ -52,12 +52,25 @@ export const CustomFolderIcons: QuartzTransformerPlugin = () => ({
         loadTime: "afterDOMReady",
         spaPreserve: true,
         script: `(() => {
-          const folders = new Set(${JSON.stringify(folders)});
+          const folders = ${JSON.stringify(folders)};
+          const base = ${JSON.stringify(base)};
+          function normalizePath(path) {
+            return decodeURIComponent(path).replace(/\\/+$|\\.html$/g, "").replace(/\\/index$/, "").normalize("NFC");
+          }
           function markFolders() {
+            const canonical = new URL(base + "/" + (document.body.dataset.slug || "index"), window.location.origin);
             document.querySelectorAll(".center .section-ul .desc > h3 > a").forEach((link) => {
-              const url = new URL(link.getAttribute("href"), window.location.href);
-              const path = decodeURIComponent(url.pathname).replace(/\\/index(?:\\.html)?$/, "").replace(/\\/$/, "");
-              link.classList.toggle("folder-list-link", folders.has(path));
+              const href = link.getAttribute("href") || "";
+              const paths = [new URL(href, canonical), new URL(href, window.location.href)]
+                .filter(url => url.origin === window.location.origin)
+                .map(url => normalizePath(url.pathname));
+              const folder = folders.find(folder => {
+                const expected = normalizePath(folder);
+                const relative = expected.slice(base.length);
+                return paths.some(path => path === expected || path.endsWith(relative));
+              });
+              link.classList.toggle("folder-list-link", Boolean(folder));
+              if (folder) link.setAttribute("href", folder + "/");
             });
           }
           markFolders();
