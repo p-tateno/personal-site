@@ -57,3 +57,15 @@ $article-list-item-gap: 1.5rem;
     margin-block-start: $article-list-item-gap;
   }
 }
+
+// Explorerのタイトルは行の長さを整えず、右端まで使って折り返します。
+.sidebar.left .explorer .explorer-content li > a {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  white-space: normal;
+  text-wrap: wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-break: auto;
+}
