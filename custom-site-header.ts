@@ -15,16 +15,16 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
     return {
       css: [{ inline: true, content: `
         #site-topbar {
-          box-sizing: border-box; width: 100%; max-width: 1500px; min-height: 76px;
-          margin: 0 auto; padding: 16px 24px 16px 80px;
+          box-sizing: border-box; width: 100%; max-width: none; min-height: 76px;
+          margin: 0 auto; padding: 16px 24px 16px var(--header-content-left, 80px);
           display: flex; align-items: center; justify-content: space-between; gap: 24px;
           color: var(--dark); font-size: 1rem; line-height: 1.5;
         }
         #site-topbar a { background: none; text-decoration: none; font-weight: 400; }
         #site-topbar .site-identity { display: flex; align-items: baseline; gap: 0.5em; min-width: 0; white-space: nowrap; }
-        #site-topbar .site-name { color: var(--dark); }
+        #site-topbar .site-name { color: var(--dark); font-size: 1.5em; }
         #site-topbar .site-section { color: var(--gray); font-weight: 400; }
-        #site-topbar .site-links { display: flex; gap: 1.2em; align-items: center; white-space: nowrap; }
+        #site-topbar .site-links { display: flex; gap: 0.7em; align-items: center; white-space: nowrap; }
         #site-topbar .site-links a { color: var(--darkgray); }
         #site-topbar a:hover { color: var(--secondary); }
         #site-topbar a[aria-current] { color: var(--secondary); }
@@ -36,9 +36,11 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         #site-topbar .site-theme-switch svg { width: 20px; height: 20px; }
         #site-topbar :focus-visible { outline: 2px solid var(--secondary); outline-offset: 4px; }
         html body #quartz-root.page > #quartz-body > .center > .page-header { margin-top: 2rem; }
+        body[data-slug="index"] .center .article-title { display: none; }
         @media (max-width: 800px) {
           #site-topbar { min-height: 76px; gap: 12px; padding-right: 16px; font-size: 0.9rem; }
-          #site-topbar .site-links a { display: none; }
+          #site-topbar { flex-wrap: wrap; }
+          #site-topbar .site-links { margin-left: auto; }
           #site-topbar .site-identity { overflow: hidden; }
           #site-topbar .site-section { overflow: hidden; text-overflow: ellipsis; }
         }
@@ -71,18 +73,35 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
               identity.append(separator, category);
             }
             const links = document.createElement("div"); links.className = "site-links";
-            for (const section of sections) {
-              const link = document.createElement("a"); link.href = base + "/" + section.slug + "/";
-              link.textContent = section.label;
-              if (section === current) link.setAttribute("aria-current", "location");
+            const destinations = [
+              { label: "プロフィール", path: "/profile" },
+              { label: "コンタクト", path: "/contact" },
+            ];
+            destinations.forEach((destination, index) => {
+              if (index) {
+                const divider = document.createElement("span");
+                divider.textContent = "｜"; divider.setAttribute("aria-hidden", "true");
+                links.appendChild(divider);
+              }
+              const link = document.createElement("a");
+              link.href = base + destination.path; link.textContent = destination.label;
               links.appendChild(link);
-            }
+            });
             const theme = document.createElement("button"); theme.type = "button";
             theme.className = "site-theme-switch"; theme.setAttribute("aria-label", "明暗を切り替える");
             theme.innerHTML = sun;
             theme.addEventListener("click", () => document.querySelector(".sidebar.left button.darkmode")?.click());
             links.appendChild(theme); nav.append(identity, links); root.before(nav);
+            alignHeader();
           }
+          function alignHeader() {
+            const nav = document.getElementById("site-topbar");
+            const center = document.querySelector("#quartz-body > .center");
+            if (!nav || !center) return;
+            const offset = center.getBoundingClientRect().left - nav.getBoundingClientRect().left;
+            nav.style.setProperty("--header-content-left", Math.max(72, offset) + "px");
+          }
+          window.addEventListener("resize", alignHeader);
           renderHeader(); document.addEventListener("nav", renderHeader);
         })();`,
       }],
