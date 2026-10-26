@@ -132,3 +132,11 @@ html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar.left .e
   text-align-last: start;
   text-wrap: wrap;
 }
+
+// 日付・読了時間の後にある本文冒頭の段落の余白を2.5倍にします。
+$body-opening-gap: $body-font-size * 2.5;
+
+.center:has(.page-header .content-meta) > article > .markdown-preview-view > p:first-child,
+.center:has(.page-header .content-meta) > .popover-hint > article > .markdown-preview-view > p:first-child {
+  margin-block-start: $body-opening-gap;
+}

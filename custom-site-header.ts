@@ -24,7 +24,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
       css: [{ inline: true, content: `
         #site-topbar {
           box-sizing: border-box; width: 100%; max-width: none; min-height: 76px;
-          margin: 0 auto; padding: 40px var(--header-content-right, 24px) 16px var(--header-content-left, 80px);
+          margin: 0 auto; padding: 60px var(--header-content-right, 24px) 16px var(--header-content-left, 80px);
           display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
           color: var(--dark); font-size: 1rem; line-height: 1.5;
         }
@@ -46,7 +46,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         html body #quartz-root.page > #quartz-body > .center > .page-header { margin-top: 2rem; }
         body[data-slug="index"] .center .article-title { display: none; }
         @media (max-width: 800px) {
-          #site-topbar { min-height: 76px; gap: 12px; padding-top: 180px; font-size: 0.9rem; }
+          #site-topbar { min-height: 76px; gap: 12px; padding-top: 270px; font-size: 0.9rem; }
           #site-topbar { flex-wrap: wrap; }
           #site-topbar .site-links { margin-left: auto; }
           #site-topbar .site-identity { overflow: hidden; }
