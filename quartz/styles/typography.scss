@@ -151,3 +151,24 @@ html body a.internal:hover {
 .center .breadcrumb-container {
   font-size: 0.8em;
 }
+
+// 英字・日本語・区切り記号を同じ行の高さと文字の基準線で揃えます。
+.center .breadcrumb-container {
+  align-items: baseline;
+  line-height: 1.5;
+
+  .breadcrumb-element {
+    align-items: baseline;
+    line-height: inherit;
+
+    > a,
+    > p {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    > p {
+      margin-block: 0;
+    }
+  }
+}
