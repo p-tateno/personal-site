@@ -3,7 +3,8 @@ $body-font-size: 18px;
 $body-line-height: 1.9;
 
 // 本文だけに適用。サイドバーやページタイトルのサイズは維持します。
-.center > article {
+.center > article,
+.center > .popover-hint > article {
   font-size: $body-font-size;
   line-height: $body-line-height;
 
