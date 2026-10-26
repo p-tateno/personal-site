@@ -45,3 +45,14 @@ $article-title-top-space: 1rem;
     }
   }
 }
+
+// 記事一覧の各項目の間隔。大きくすると一覧の行間が広がります。
+$article-list-item-gap: 1.5rem;
+
+.center .section-ul > .section-li {
+  margin-block-end: 0;
+
+  + .section-li {
+    margin-block-start: $article-list-item-gap;
+  }
+}
