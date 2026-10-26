@@ -172,3 +172,8 @@ html body a.internal:hover {
     }
   }
 }
+
+// フォルダのindex.mdの本文のみ、現在の80%の文字サイズにします。
+.center > .popover-hint > article {
+  font-size: $body-font-size * 0.8;
+}
