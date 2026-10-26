@@ -177,3 +177,8 @@ html body a.internal:hover {
 .center > .popover-hint > article {
   font-size: $body-font-size * 0.8;
 }
+
+// トップページだけ日付・読了時間を非表示にします。
+body[data-slug="index"] .center .page-header .content-meta {
+  display: none;
+}
