@@ -27,3 +27,21 @@ $article-title-top-space: 1rem;
 .center .article-title {
   padding-block-start: $article-title-top-space;
 }
+
+// フォルダ一覧：日付とタイトルの文字の基準線を揃えます。
+.center .section-ul > .section-li > .section {
+  align-items: baseline;
+
+  > .meta {
+    margin-block: 0;
+  }
+
+  > .desc > h3 {
+    margin: 0;
+    line-height: inherit;
+
+    > a.internal {
+      line-height: inherit;
+    }
+  }
+}
