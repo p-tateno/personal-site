@@ -1,5 +1,5 @@
 // 本文の文字サイズと行間。ここにある2つの値を変更してください。
-$body-font-size: 18px;
+$body-font-size: 21.6px;
 $body-line-height: 1.9;
 
 // 本文だけに適用。サイドバーやページタイトルのサイズは維持します。
@@ -104,4 +104,9 @@ $article-list-item-gap: 1.5rem;
 // Graph Viewの背景：白とサイドバーの背景色を半分ずつ混ぜます。
 html[saved-theme="light"] body .sidebar.left .graph > .graph-outer {
   background-color: color-mix(in srgb, #fff 50%, var(--tab-container-background, #f6f6f6) 50%);
+}
+
+// 記事タイトルはテーマの基準サイズから20%拡大します。
+html body .center h1.article-title {
+  font-size: calc(var(--inline-title-size, 1.75rem) * 1.2);
 }
