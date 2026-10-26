@@ -8,4 +8,4 @@ pageTitle: "Mitsuhiro Tateno"
 
 2026-10-26
 
-[[PUBLIC/走る/index|走る]]
+[[PUBLIC/走る|走る]]
