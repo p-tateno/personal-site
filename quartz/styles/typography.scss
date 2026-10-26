@@ -20,3 +20,10 @@ $body-line-height: 1.9;
     line-height: inherit;
   }
 }
+
+// パンくずリストと記事タイトルの間に追加する余白。
+$article-title-top-space: 1rem;
+
+.center .article-title {
+  padding-block-start: $article-title-top-space;
+}
