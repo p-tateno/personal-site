@@ -1,0 +1,22 @@
+// 本文の文字サイズと行間。ここにある2つの値を変更してください。
+$body-font-size: 18px;
+$body-line-height: 1.9;
+
+// 本文だけに適用。サイドバーやページタイトルのサイズは維持します。
+.center > article {
+  font-size: $body-font-size;
+  line-height: $body-line-height;
+
+  p,
+  li,
+  blockquote,
+  table {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  // Quartzの内部リンクに設定された固定の行間を解除します。
+  a.internal {
+    line-height: inherit;
+  }
+}
