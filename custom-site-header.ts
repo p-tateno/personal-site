@@ -1,4 +1,6 @@
-import { readdirSync } from "node:fs"
+import { readdirSync, readFileSync } from "node:fs"
+import { join } from "node:path"
+import { parse } from "yaml"
 import { slugifyFilePath } from "@quartz-community/utils"
 import type { QuartzTransformerPlugin } from "./quartz/plugins/types"
 
@@ -6,6 +8,12 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
   name: "CustomSiteHeader",
   externalResources({ argv, cfg }) {
     const base = new URL(`https://${cfg.configuration.baseUrl}`).pathname.replace(/\/$/, "")
+    const source = readFileSync(join(argv.directory, "index.md"), "utf8").replace(/^\uFEFF/, "")
+    const frontmatter = /^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/.exec(source)
+    const metadata = frontmatter ? parse(frontmatter[1]) : undefined
+    const siteTitle = typeof metadata?.title === "string" && metadata.title.trim()
+      ? metadata.title.trim()
+      : cfg.configuration.pageTitle
     const names = ["Diary", "つくる", "移動する", "走る"]
     const available = new Set(readdirSync(argv.directory, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name))
     const sections = names.filter(name => available.has(name)).map(name => ({
@@ -50,7 +58,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         script: `(() => {
           const base = ${JSON.stringify(base)};
           const sections = ${JSON.stringify(sections)};
-          const name = ${JSON.stringify(cfg.configuration.pageTitle)};
+          const name = ${JSON.stringify(siteTitle)};
           // Lucide Sun, ISC License: see custom-sidebar-menu.ts for the license notice.
           const sun = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42M6.35 17.65l-1.42 1.42"/></svg>';
           let contentObserver;
