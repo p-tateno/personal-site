@@ -79,7 +79,7 @@ export const CustomSidebarMenu: QuartzTransformerPlugin = () => ({
       css: [{ inline: true, content: `
         #sidebar-menu-toggle {
           position: fixed; top: 16px; left: 16px; z-index: 10002;
-          display: grid; place-items: center; width: 44px; height: 44px;
+          display: none; place-items: center; width: 44px; height: 44px;
           padding: 0; border: 1px solid var(--lightgray); border-radius: 8px;
           color: var(--dark); background: var(--light); cursor: pointer;
         }
