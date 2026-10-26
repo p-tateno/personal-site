@@ -1,0 +1,9 @@
+filters:
+  and:
+    - file.inFolder("PUBLIC/Diary")
+views:
+  - type: table
+    name: ビュー
+    order:
+      - created
+      - file.name

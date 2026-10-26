@@ -6,6 +6,4 @@ pageTitle: Mitsuhiro Tateno page
 
 これは個人の記録を少しずつ外へ開いていく場所です。
 
-2026-10-26
-
-[[走る]]
+![[p-diary.base]]
