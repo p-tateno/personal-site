@@ -1,9 +1,8 @@
 ---
 title: 舘野光洋のサイトです
-pageTitle: Mitsuhiro Tateno page
+pageTitle: 舘野光洋のページです
 ---
 走る。書く。つくる。記録する。移動する。
 
 これは個人の記録を少しずつ外へ開いていく場所です。
 
-![[p-diary.base]]
