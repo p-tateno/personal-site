@@ -146,3 +146,8 @@ html body a.internal,
 html body a.internal:hover {
   background-color: transparent;
 }
+
+// パンくずリストを従来の80%のサイズにします。
+.center .breadcrumb-container {
+  font-size: 0.8em;
+}

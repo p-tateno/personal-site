@@ -30,7 +30,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         }
         #site-topbar a { background: none; text-decoration: none; font-weight: 400; }
         #site-topbar .site-identity { display: flex; align-items: baseline; gap: 0.5em; min-width: 0; white-space: nowrap; }
-        #site-topbar .site-name { color: var(--dark); font-size: 2em; }
+        #site-topbar .site-name { color: var(--dark); font-size: 1.6em; font-weight: 700; }
         #site-topbar .site-section { color: var(--gray); font-weight: 400; }
         #site-topbar .site-links { display: flex; gap: 0.7em; align-items: center; white-space: nowrap; }
         #site-topbar .site-links a { color: var(--darkgray); }
