@@ -16,13 +16,13 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
       css: [{ inline: true, content: `
         #site-topbar {
           box-sizing: border-box; width: 100%; max-width: none; min-height: 76px;
-          margin: 0 auto; padding: 16px 24px 16px var(--header-content-left, 80px);
-          display: flex; align-items: center; justify-content: space-between; gap: 24px;
+          margin: 0 auto; padding: 16px var(--header-content-right, 24px) 16px var(--header-content-left, 80px);
+          display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
           color: var(--dark); font-size: 1rem; line-height: 1.5;
         }
         #site-topbar a { background: none; text-decoration: none; font-weight: 400; }
         #site-topbar .site-identity { display: flex; align-items: baseline; gap: 0.5em; min-width: 0; white-space: nowrap; }
-        #site-topbar .site-name { color: var(--dark); font-size: 1.5em; }
+        #site-topbar .site-name { color: var(--dark); font-size: 2em; }
         #site-topbar .site-section { color: var(--gray); font-weight: 400; }
         #site-topbar .site-links { display: flex; gap: 0.7em; align-items: center; white-space: nowrap; }
         #site-topbar .site-links a { color: var(--darkgray); }
@@ -38,7 +38,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         html body #quartz-root.page > #quartz-body > .center > .page-header { margin-top: 2rem; }
         body[data-slug="index"] .center .article-title { display: none; }
         @media (max-width: 800px) {
-          #site-topbar { min-height: 76px; gap: 12px; padding-right: 16px; font-size: 0.9rem; }
+          #site-topbar { min-height: 76px; gap: 12px; padding-top: 72px; font-size: 0.9rem; }
           #site-topbar { flex-wrap: wrap; }
           #site-topbar .site-links { margin-left: auto; }
           #site-topbar .site-identity { overflow: hidden; }
@@ -53,6 +53,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
           const name = ${JSON.stringify(cfg.configuration.pageTitle)};
           // Lucide Sun, ISC License: see custom-sidebar-menu.ts for the license notice.
           const sun = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42M6.35 17.65l-1.42 1.42"/></svg>';
+          let contentObserver;
           function renderHeader() {
             const root = document.getElementById("quartz-root");
             if (!root) return;
@@ -93,15 +94,30 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
             theme.addEventListener("click", () => document.querySelector(".sidebar.left button.darkmode")?.click());
             links.appendChild(theme); nav.append(identity, links); root.before(nav);
             alignHeader();
+            requestAnimationFrame(alignHeader);
+            contentObserver?.disconnect();
+            const content = document.querySelector("#quartz-body > .center");
+            if (content && typeof ResizeObserver !== "undefined") {
+              contentObserver = new ResizeObserver(alignHeader);
+              contentObserver.observe(content);
+            }
           }
           function alignHeader() {
             const nav = document.getElementById("site-topbar");
-            const center = document.querySelector("#quartz-body > .center");
-            if (!nav || !center) return;
-            const offset = center.getBoundingClientRect().left - nav.getBoundingClientRect().left;
-            nav.style.setProperty("--header-content-left", Math.max(72, offset) + "px");
+            const content = document.querySelector("#quartz-body > .center > article .markdown-preview-view, #quartz-body > .center > .popover-hint > article .markdown-preview-view")
+              || document.querySelector("#quartz-body > .center > article, #quartz-body > .center > .popover-hint > article")
+              || document.querySelector("#quartz-body > .center");
+            if (!nav || !content) return;
+            const rect = content.getBoundingClientRect();
+            const frame = nav.getBoundingClientRect();
+            const style = getComputedStyle(content);
+            const left = rect.left + (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.borderLeftWidth) || 0);
+            const right = rect.right - (parseFloat(style.paddingRight) || 0) - (parseFloat(style.borderRightWidth) || 0);
+            nav.style.setProperty("--header-content-left", Math.max(0, left - frame.left) + "px");
+            nav.style.setProperty("--header-content-right", Math.max(0, frame.right - right) + "px");
           }
           window.addEventListener("resize", alignHeader);
+          document.fonts?.ready.then(alignHeader);
           renderHeader(); document.addEventListener("nav", renderHeader);
         })();`,
       }],
