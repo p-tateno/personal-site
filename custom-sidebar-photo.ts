@@ -17,7 +17,7 @@ export const CustomSidebarPhoto: QuartzTransformerPlugin = () => ({
     return {
       css: [{ inline: true, content: `
         .sidebar.left .sidebar-photo {
-          width: 180px;
+          width: 100%;
           max-width: 100%;
           margin: 0;
           flex: 0 0 auto;
