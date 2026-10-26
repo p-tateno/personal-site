@@ -140,3 +140,9 @@ $body-opening-gap: $body-font-size * 2.5;
 .center:has(.page-header .content-meta) > .popover-hint > article > .markdown-preview-view > p:first-child {
   margin-block-start: $body-opening-gap;
 }
+
+// 内部リンクのマーカー風の背景をなくします。
+html body a.internal,
+html body a.internal:hover {
+  background-color: transparent;
+}
