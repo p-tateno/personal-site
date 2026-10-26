@@ -1,5 +1,5 @@
 ---
-title: Mitsuhiro Tateno title
+title: 舘野光洋のサイトです
 pageTitle: Mitsuhiro Tateno page
 ---
 走る。書く。つくる。記録する。移動する。
