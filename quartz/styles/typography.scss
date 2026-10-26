@@ -124,3 +124,11 @@ html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar.left:ha
 html[saved-theme="light"] body #quartz-root.page > #quartz-body .sidebar.left .explorer-content {
   background-color: #fff;
 }
+
+// 本文の段落は両端揃え。段落末の行は左揃えにします。
+.center > article p,
+.center > .popover-hint > article p {
+  text-align: justify;
+  text-align-last: start;
+  text-wrap: wrap;
+}
