@@ -1,3 +1,4 @@
+import { h } from "preact"
 import type { QuartzTransformerPlugin } from "./quartz/plugins/types"
 
 // Lucide Menu / X — ISC License, Copyright (c) 2026 Lucide Icons and Contributors.
@@ -75,6 +76,29 @@ export const CustomSidebarMenu: QuartzTransformerPlugin = () => ({
   name: "CustomSidebarMenu",
   externalResources() {
     return {
+      // head内のインラインCSSで、後続のJavaScriptやCSSの読み込み前から隠します。
+      additionalHead: [h("style", { id: "sidebar-initial-visibility" }, `
+        .page > #quartz-body > .sidebar.left,
+        .page > #quartz-body > .sidebar.right {
+          display: none !important;
+        }
+        .page > #quartz-body > .center {
+          grid-column: 2;
+          grid-row: 1 / 3;
+          min-width: 0;
+          width: 100%;
+        }
+        .page > #quartz-body > footer { grid-column: 2; grid-row: 3; }
+        @media (max-width: 1200px) {
+          .page > #quartz-body {
+            grid-template-columns: minmax(0, 850px);
+            justify-content: center;
+            grid-template-areas: "grid-header" "grid-center" "grid-footer";
+          }
+          .page > #quartz-body > .center,
+          .page > #quartz-body > footer { grid-column: 1; }
+        }
+      `)],
       js: [{ contentType: "inline", loadTime: "afterDOMReady", spaPreserve: true, script: sidebarMenuScript }],
       css: [{ inline: true, content: `
         #sidebar-menu-toggle {
