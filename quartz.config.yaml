@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: "p-tateno.github.io/personal-site"
+  baseUrl: "mtateno.com"
   ignorePatterns:
     - private
     - templates
