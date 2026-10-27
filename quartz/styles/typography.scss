@@ -182,3 +182,16 @@ html body a.internal:hover {
 body[data-slug="index"] .center .page-header .content-meta {
   display: none;
 }
+
+// スマートフォンでは本文を読みやすいサイズと行間にします。
+@media (max-width: 800px) {
+  .center > article {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .center > .popover-hint > article {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
