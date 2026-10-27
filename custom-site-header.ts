@@ -46,7 +46,7 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
         html body #quartz-root.page > #quartz-body > .center > .page-header { margin-top: 2rem; }
         body[data-slug="index"] .center .article-title { display: none; }
         @media (max-width: 800px) {
-          #site-topbar { min-height: 76px; gap: 12px; padding-top: 270px; font-size: 0.9rem; }
+          #site-topbar { min-height: 76px; gap: 12px; padding-top: 24px; font-size: 0.9rem; }
           #site-topbar { flex-wrap: wrap; }
           #site-topbar .site-links { margin-left: auto; }
           #site-topbar .site-identity { overflow: hidden; }
