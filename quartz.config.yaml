@@ -3,7 +3,7 @@ configuration:
   pageTitle: TATENO Mitsuhiro
   pageTitleSuffix: ""
   enableSPA: false
-  enablePopovers: true
+  enablePopovers: false
   analytics:
     provider: plausible
   locale: en-US
