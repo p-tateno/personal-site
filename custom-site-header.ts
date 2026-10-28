@@ -14,9 +14,10 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
     const siteTitle = typeof metadata?.title === "string" && metadata.title.trim()
       ? metadata.title.trim()
       : cfg.configuration.pageTitle
-    const names = ["Diary", "つくる", "移動する", "走る"]
-    const available = new Set(readdirSync(argv.directory, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name))
-    const sections = names.filter(name => available.has(name)).map(name => ({
+    const names = readdirSync(argv.directory, { withFileTypes: true })
+      .filter(entry => entry.isDirectory() && !entry.name.startsWith("."))
+      .map(entry => entry.name)
+    const sections = names.map(name => ({
       label: name,
       slug: slugifyFilePath(`${name}/index.md` as Parameters<typeof slugifyFilePath>[0]).replace(/\/index$/, ""),
     }))

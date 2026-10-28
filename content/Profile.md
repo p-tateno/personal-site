@@ -13,7 +13,7 @@ pageTitle: 舘野光洋のプロフィール
 
 日記を書いてきたアプリは、HyperCard（手作り）、FileMaker（手作り）、Day One、今はObsidianです。アプリを変えるたびにデータの移行が大変でした。HyperCardが一番好きなアプリです。
 
-毎日を面白く楽しくやってます。
+毎日、面白く楽しくやってます。
 [面白いことがあれば教えてください](mailto:mail@mtateno.com)
 
 ![[sidebar.jpg|300]]
