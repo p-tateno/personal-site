@@ -264,3 +264,13 @@ html body .center .section-ul > .section-li > .section > .desc > h3 > a {
     color: var(--link-color-hover, var(--tertiary));
   }
 }
+
+// Obsidianで本文に配置した内部リンクも、記事一覧と同じホバー色にします。
+html body .center article a.internal:not(.tag-link),
+html body .center article a.internal-link:not(.tag-link) {
+  color: var(--link-color, var(--secondary));
+
+  &:hover {
+    color: var(--link-color-hover, var(--tertiary));
+  }
+}
