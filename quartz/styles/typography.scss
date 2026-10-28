@@ -202,3 +202,10 @@ body[data-slug="index"] .center .page-header .content-meta {
   line-height: 1.5;
   color: var(--gray);
 }
+
+// 日付・読了時間とフォルダ件数を、一覧の日付と同じ色・濃さに揃えます。
+html body .center .content-meta,
+html body .center .page-listing > p {
+  color: var(--nav-item-color, var(--darkgray));
+  opacity: 0.6;
+}
