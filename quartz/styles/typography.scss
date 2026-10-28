@@ -249,3 +249,9 @@ html body .center .page-listing > p {
     }
   }
 }
+
+// フォルダ内の記事一覧のタイトルは通常の太さにします。
+html body .center .section-ul > .section-li > .section > .desc > h3,
+html body .center .section-ul > .section-li > .section > .desc > h3 > a {
+  font-weight: 400;
+}
