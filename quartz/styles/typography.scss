@@ -195,3 +195,10 @@ body[data-slug="index"] .center .page-header .content-meta {
     line-height: 1.6;
   }
 }
+
+// フォルダ内の件数はパンくずと同じサイズで控えめに表示します。
+.center .page-listing > p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
