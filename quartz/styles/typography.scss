@@ -229,3 +229,23 @@ html body .center .page-listing > p {
     }
   }
 }
+
+// デスクトップでもタグが空の行は、日付とタイトルの2列で表示します。
+@media (min-width: 801px) {
+  .center .section-ul > .section-li > .section:not(:has(> .tags > li)) {
+    grid-template-columns: max-content minmax(0, 1fr);
+
+    > .tags {
+      display: none;
+    }
+
+    > .desc {
+      min-width: 0;
+    }
+
+    > .desc > h3 > a {
+      text-wrap: wrap;
+      overflow-wrap: anywhere;
+    }
+  }
+}
