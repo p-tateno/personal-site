@@ -255,3 +255,12 @@ html body .center .section-ul > .section-li > .section > .desc > h3,
 html body .center .section-ul > .section-li > .section > .desc > h3 > a {
   font-weight: 400;
 }
+
+// 自動生成の記事一覧も、本文中のリンクと同じ色にします。
+html body .center .section-ul > .section-li > .section > .desc > h3 > a {
+  color: var(--link-color, var(--secondary));
+
+  &:hover {
+    color: var(--link-color-hover, var(--tertiary));
+  }
+}
