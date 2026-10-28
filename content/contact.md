@@ -3,7 +3,7 @@ title: コンタクト
 ---
 
 感想やお問い合わせなど、お気軽にお送りください。
-あるいは[こちらからメールしてください](mailto:mail@mtateno.com)
+あるいは[こちらからメールしてください。](mailto:mail@mtateno.com)
 
 <form class="contact-form" id="contact-form" method="post">
   <fieldset disabled>
