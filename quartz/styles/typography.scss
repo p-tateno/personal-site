@@ -209,3 +209,23 @@ html body .center .page-listing > p {
   color: var(--nav-item-color, var(--darkgray));
   opacity: 0.6;
 }
+
+// スマートフォンの記事一覧は日付・タイトルの2列で右端まで使います。
+@media (max-width: 800px) {
+  .center .section-ul > .section-li > .section {
+    grid-template-columns: max-content minmax(0, 1fr);
+
+    > .tags {
+      display: none;
+    }
+
+    > .desc {
+      min-width: 0;
+    }
+
+    > .desc > h3 > a {
+      text-wrap: wrap;
+      overflow-wrap: anywhere;
+    }
+  }
+}
