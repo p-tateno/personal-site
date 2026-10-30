@@ -285,12 +285,19 @@ html body .center .section-ul > .section-li > .section > ul.tags {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 0.35rem;
+  gap: 0.5rem;
+  flex-direction: column;
   align-content: start;
   align-items: flex-start;
   flex-wrap: wrap;
 
   > li {
+    display: flex;
+    flex: none;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    line-height: normal;
     list-style: none;
     width: fit-content;
     max-width: 100%;
@@ -300,7 +307,10 @@ html body .center .section-ul > .section-li > .section > ul.tags {
     &::marker { content: ""; }
 
     > a {
-      display: inline-block;
+      display: block;
+      margin: 0;
+      border: 0;
+      box-shadow: none;
       width: auto;
       max-width: 100%;
       box-sizing: border-box;
