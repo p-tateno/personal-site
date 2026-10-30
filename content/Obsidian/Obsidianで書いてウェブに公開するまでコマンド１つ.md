@@ -5,6 +5,7 @@ tags:
   - Alfred
   - GitHub
   - Obsidian
+  - AI
 ---
 [[GitHubに手を出すとは思っていなかった]]　からのつづき。
 
