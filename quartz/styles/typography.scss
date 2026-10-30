@@ -324,3 +324,12 @@ html body .center .section-ul > .section-li > .section > ul.tags {
     }
   }
 }
+
+// Explicit layout makes the tag gap effective even without the TagList component CSS.
+@media (min-width: 801px) {
+  html body .center .section-ul > .section-li > .section > ul.tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
