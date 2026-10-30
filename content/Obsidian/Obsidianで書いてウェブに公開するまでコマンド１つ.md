@@ -4,6 +4,7 @@ tags:
   - Vault
   - Alfred
   - GitHub
+  - Obsidian
 ---
 [[GitHubに手を出すとは思っていなかった]]　からのつづき。
 

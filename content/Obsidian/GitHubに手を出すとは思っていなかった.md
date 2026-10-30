@@ -1,6 +1,10 @@
 ---
 created: 2026-10-26
 cover: "[[PUBLIC/p-images/github.png]]"
+tags:
+  - GitHub
+  - Obsidian
+  - AI
 ---
 ついにGitHubでウェブサイトを公開した。
 
