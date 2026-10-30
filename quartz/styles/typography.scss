@@ -274,3 +274,8 @@ html body .center article a.internal-link:not(.tag-link) {
     color: var(--link-color-hover, var(--tertiary));
   }
 }
+
+// Keep the wide-screen page gutters on the body background in both themes.
+html[saved-theme] body[data-slug] #quartz-root.page {
+  background: transparent !important;
+}
