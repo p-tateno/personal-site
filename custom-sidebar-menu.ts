@@ -98,6 +98,25 @@ export const CustomSidebarMenu: QuartzTransformerPlugin = () => ({
           .page > #quartz-body > .center,
           .page > #quartz-body > footer { grid-column: 1; }
         }
+        /* Tablet reading width stays the same after rotation. */
+        @media (hover: none) and (pointer: coarse) and (min-width: 801px) {
+          html body[data-slug] #quartz-root.page {
+            max-width: none;
+            width: auto;
+            margin-inline: 0;
+            padding-inline: 0;
+          }
+          html body[data-slug] #quartz-root.page > #quartz-body {
+            grid-template-columns: minmax(0, 800px) !important;
+            grid-template-areas: "grid-header" "grid-center" "grid-footer" !important;
+            justify-content: center;
+            padding-inline: 1rem;
+          }
+          html body[data-slug] #quartz-root.page > #quartz-body > .center,
+          html body[data-slug] #quartz-root.page > #quartz-body > footer {
+            grid-column: 1 !important;
+          }
+        }
       `)],
       js: [{ contentType: "inline", loadTime: "afterDOMReady", spaPreserve: true, script: sidebarMenuScript }],
       css: [{ inline: true, content: `
