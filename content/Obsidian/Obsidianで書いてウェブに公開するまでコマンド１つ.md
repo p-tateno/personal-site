@@ -1,5 +1,9 @@
 ---
 created: 2026-10-28
+tags:
+  - Vault
+  - Alfred
+  - GitHub
 ---
 [[GitHubに手を出すとは思っていなかった]]　からのつづき。
 
