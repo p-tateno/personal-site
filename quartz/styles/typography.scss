@@ -325,12 +325,25 @@ html body .center .section-ul > .section-li > .section > ul.tags {
   }
 }
 
-// Explicit layout makes the tag gap effective even without the TagList component CSS.
+// Desktop listing: date beside the title, horizontal tags beneath the title.
 @media (min-width: 801px) {
-  html body .center .section-ul > .section-li > .section > ul.tags {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  html body .center .section-ul > .section-li > .section {
+    grid-template-columns: max-content minmax(0, 1fr);
+    row-gap: 0.5rem;
+
+    > .meta { grid-column: 1; grid-row: 1; }
+    > .desc { grid-column: 2; grid-row: 1; min-width: 0; }
+
+    > ul.tags {
+      display: flex;
+      grid-column: 2;
+      grid-row: 2;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    > ul.tags:not(:has(> li)) { display: none; }
   }
 }
 
