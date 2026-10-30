@@ -26,13 +26,14 @@ export const CustomSiteLinks: QuartzTransformerPlugin = () => ({
         function fixLinks() {
           const canonical = new URL(base + "/" + (document.body.dataset.slug || "index"), location.origin);
           document.querySelectorAll("a[href]").forEach(link => {
+            if (link.classList.contains("tag-link")) return;
             const href = link.getAttribute("href") || "";
             if (!href || href.startsWith("#")) return;
             let url;
             try { url = new URL(href, canonical); } catch { return; }
             if (url.origin !== location.origin) return;
             const path = normalize(url.pathname);
-            const folder = folders.find(folder => path === base + "/" + folder || path.endsWith("/" + folder));
+            const folder = folders.find(folder => path === base + "/" + folder);
             if (folder) link.setAttribute("href", base + "/" + folder + "/" + url.search + url.hash);
           });
           const home = document.querySelector(".breadcrumb-container .breadcrumb-element:first-child a");

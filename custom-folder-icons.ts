@@ -66,8 +66,7 @@ export const CustomFolderIcons: QuartzTransformerPlugin = () => ({
                 .map(url => normalizePath(url.pathname));
               const folder = folders.find(folder => {
                 const expected = normalizePath(folder);
-                const relative = expected.slice(base.length);
-                return paths.some(path => path === expected || path.endsWith(relative));
+                return paths.some(path => path === expected);
               });
               link.classList.toggle("folder-list-link", Boolean(folder));
               if (folder) link.setAttribute("href", folder + "/");
