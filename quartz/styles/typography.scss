@@ -424,7 +424,7 @@ html body[data-slug="走る/練習記録"] .center article {
     }
     td:not(:first-child), th:not(:first-child) {
       overflow-wrap: anywhere;
-      color: var(--darkgray);
+      color: var(--text-muted, #5c5c5c);
       font-size: $body-font-size;
       font-weight: 400;
       line-height: 1.6;
