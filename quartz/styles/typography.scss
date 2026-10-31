@@ -422,6 +422,7 @@ html body[data-slug="走る/練習記録"] .center article {
       color: var(--nav-item-color, var(--darkgray));
       opacity: 0.6;
       font-variant-numeric: tabular-nums;
+      font-size: 0.85em;
     }
     td:not(:first-child), th:not(:first-child) {
       overflow-wrap: anywhere;
