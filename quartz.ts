@@ -1,3 +1,4 @@
+import { JapaneseOgImages } from "./custom-japanese-og"
 import { CustomArticleTags } from "./custom-article-tags"
 import { CustomSiteFooter } from "./custom-site-footer"
 import { CustomContactForm } from "./custom-contact-form"
@@ -10,6 +11,9 @@ import { CustomDateFormat } from "./custom-date-format"
 import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 
 const config = await loadQuartzConfig()
+config.plugins.emitters = config.plugins.emitters.map(plugin =>
+  plugin.name === "CustomOgImages" ? JapaneseOgImages() : plugin,
+)
 config.plugins.transformers.push(CustomDateFormat(), CustomSidebarPhoto(), CustomFolderIcons(), CustomSidebarMenu(), CustomSiteHeader(), CustomSiteLinks(), CustomContactForm(), CustomSiteFooter(), CustomArticleTags())
 export default config
 export const layout = await loadQuartzLayout()
