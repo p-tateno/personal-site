@@ -7,8 +7,13 @@ export const dateFormatScript = `(() => {
   function formatDates() {
     document.querySelectorAll(".center time[datetime]").forEach((element) => {
       const value = element.getAttribute("datetime") || "";
-      const match = /^(\\d{4}-\\d{2}-\\d{2})(?:T|$)/.exec(value);
-      if (match) element.textContent = match[1];
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return;
+      const parts = new Intl.DateTimeFormat("en", {
+        timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit",
+      }).formatToParts(date);
+      const part = type => parts.find(p => p.type === type).value;
+      element.textContent = part("year") + "-" + part("month") + "-" + part("day");
     });
   }
   formatDates();
