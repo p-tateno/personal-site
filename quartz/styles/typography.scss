@@ -445,3 +445,9 @@ html body[data-slug="走る/練習記録"] .center article {
     font-size: 18px;
   }
 }
+
+// Use the body paragraph font for tables throughout the site.
+html body .center article table,
+html body .center article table :is(thead, tbody, tfoot, tr, th, td) {
+  font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
+}
