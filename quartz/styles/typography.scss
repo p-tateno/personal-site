@@ -382,3 +382,53 @@ html body .center article ul.article-tags {
     }
   }
 }
+
+// Training log: quiet date column and a wrapping text column.
+html body[data-slug="走る/練習記録"] .center article {
+  .table-container {
+    overflow: visible;
+    margin-block: 1.5rem;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border: 0;
+    background: transparent;
+    font-size: inherit;
+    line-height: inherit;
+
+    thead:not(:has(th:not(:empty))) { display: none; }
+    tbody, tr, td, th {
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      line-height: inherit;
+    }
+    td, th {
+      min-width: 0;
+      padding: 0.65em 0;
+      vertical-align: top;
+      text-align: left;
+    }
+    td:first-child, th:first-child {
+      width: 1%;
+      white-space: nowrap;
+      padding-inline-end: 1.25em;
+      color: var(--nav-item-color, var(--darkgray));
+      opacity: 0.6;
+      font-variant-numeric: tabular-nums;
+    }
+    td:not(:first-child), th:not(:first-child) {
+      overflow-wrap: anywhere;
+    }
+  }
+}
+@media (max-width: 800px) {
+  html body[data-slug="走る/練習記録"] .center article table {
+    td:first-child, th:first-child { padding-inline-end: 0.8em; font-size: 0.85em; }
+  }
+}
