@@ -411,7 +411,7 @@ html body[data-slug="走る/練習記録"] .center article {
     td, th {
       min-width: 0;
       padding: 0.65em 0;
-      vertical-align: top;
+      vertical-align: baseline;
       text-align: left;
     }
     td:first-child, th:first-child {
@@ -424,7 +424,7 @@ html body[data-slug="走る/練習記録"] .center article {
     }
     td:not(:first-child), th:not(:first-child) {
       overflow-wrap: anywhere;
-      color: var(--text-normal, var(--darkgray));
+      color: var(--darkgray);
       font-size: $body-font-size;
       font-weight: 400;
       line-height: 1.6;
