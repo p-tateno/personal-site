@@ -384,7 +384,7 @@ html body .center article ul.article-tags {
 }
 
 // Training log: quiet date column and a wrapping text column.
-html body[data-slug="走る/練習記録"] .center article {
+html body[data-slug^="走る/"][data-slug*="練習記録"] .center article {
   .table-container {
     overflow: visible;
     margin-block: 1.5rem;
@@ -436,13 +436,13 @@ html body[data-slug="走る/練習記録"] .center article {
   }
 }
 @media (max-width: 800px) {
-  html body[data-slug="走る/練習記録"] .center article table {
+  html body[data-slug^="走る/"][data-slug*="練習記録"] .center article table {
     td:first-child, th:first-child { padding-inline-end: 0.8em; font-size: 0.85em; }
   }
 }
 
 @media (max-width: 800px) {
-  html body[data-slug="走る/練習記録"] .center article table td:not(:first-child) {
+  html body[data-slug^="走る/"][data-slug*="練習記録"] .center article table td:not(:first-child) {
     font-size: 18px;
   }
 }
