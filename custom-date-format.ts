@@ -25,7 +25,9 @@ export const CustomDateFormat: QuartzTransformerPlugin = () => ({
   htmlPlugins() {
     return [() => (_tree, file) => {
       const slug = file.data.slug || ""
-      if (!slug.startsWith("走る/") || !slug.includes("練習記録")) return
+      const trainingLog = slug.startsWith("走る/") && slug.includes("練習記録")
+      const diary = slug.toLowerCase().startsWith("diary/") && !slug.endsWith("/index")
+      if (!trainingLog && !diary) return
       const path = file.data.filePath
       if (!path) return
       let timestamp = ""
