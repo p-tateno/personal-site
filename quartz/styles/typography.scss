@@ -492,3 +492,8 @@ html body .center article mark {
 html body .center article a {
   font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
 }
+
+// Keep emphasis in the body typeface while preserving bold/italic styles.
+html body .center article :is(strong, b, em, i) {
+  font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
+}
