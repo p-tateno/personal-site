@@ -1,6 +1,6 @@
 ---
 title: mTateno
-pageTitle: 舘野光洋のページ
+pageTitle: mTateno
 created: 2026-10-31
 ---
 
