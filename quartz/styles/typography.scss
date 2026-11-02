@@ -497,3 +497,10 @@ html body .center article a {
 html body .center article :is(strong, b, em, i) {
   font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
 }
+
+// Generated navigation and listings share the paragraph font as well.
+html body .center a,
+html body .center :is(.section-ul, .breadcrumb-container, .content-meta, .page-listing),
+html body .center :is(.section-ul, .breadcrumb-container, .content-meta, .page-listing) * {
+  font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
+}
