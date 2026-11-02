@@ -487,3 +487,8 @@ html body .center article mark {
   font-weight: inherit;
   color: inherit !important;
 }
+
+// Article links use the same font as body paragraphs.
+html body .center article a {
+  font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
+}
