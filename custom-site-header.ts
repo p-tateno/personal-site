@@ -82,20 +82,9 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
               identity.append(separator, category);
             }
             const links = document.createElement("div"); links.className = "site-links";
-            const destinations = [
-              { label: "プロフィール", path: "/profile" },
-              { label: "コンタクト", path: "/contact" },
-            ];
-            destinations.forEach((destination, index) => {
-              if (index) {
-                const divider = document.createElement("span");
-                divider.textContent = "｜"; divider.setAttribute("aria-hidden", "true");
-                links.appendChild(divider);
-              }
-              const link = document.createElement("a");
-              link.href = base + destination.path; link.textContent = destination.label;
-              links.appendChild(link);
-            });
+            const about = document.createElement("a");
+            about.href = base + "/about"; about.textContent = "about";
+            links.appendChild(about);
             const theme = document.createElement("button"); theme.type = "button";
             theme.className = "site-theme-switch"; theme.setAttribute("aria-label", "明暗を切り替える");
             theme.innerHTML = sun;
