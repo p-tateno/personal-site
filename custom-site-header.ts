@@ -11,9 +11,8 @@ export const CustomSiteHeader: QuartzTransformerPlugin = () => ({
     const source = readFileSync(join(argv.directory, "index.md"), "utf8").replace(/^\uFEFF/, "")
     const frontmatter = /^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/.exec(source)
     const metadata = frontmatter ? parse(frontmatter[1]) : undefined
-    const siteTitle = typeof metadata?.title === "string" && metadata.title.trim()
-      ? metadata.title.trim()
-      : cfg.configuration.pageTitle
+    const siteTitle = [metadata?.pageTitle, metadata?.title, cfg.configuration.pageTitle]
+      .find(value => typeof value === "string" && value.trim())?.trim() || cfg.configuration.pageTitle
     const names = readdirSync(argv.directory, { withFileTypes: true })
       .filter(entry => entry.isDirectory() && !entry.name.startsWith("."))
       .map(entry => entry.name)
