@@ -18,5 +18,6 @@ pageTitle: 舘野光洋のプロフィール
 ---
 毎日、面白がって楽しくやってます。
 [面白いことがあればメールしてください](mailto:mail@mtateno.com)
+
 ![[sidebar.jpg|300]]
 <small>北海道マラソン2026 完走</small>
