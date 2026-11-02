@@ -7,6 +7,21 @@ export const CustomArticleTags: QuartzTransformerPlugin = () => ({
   name: "CustomArticleTags",
   htmlPlugins() {
     return [() => (tree: Root, file) => {
+      function markTagRows(parent: Root | Element) {
+        for (const node of parent.children) {
+          if (node.type !== "element") continue
+          const tagLinks = node.children.filter(child => child.type === "element" && child.tagName === "a"
+            && (Array.isArray(child.properties.className) ? child.properties.className : String(child.properties.className || "").split(" ")).includes("tag-link"))
+          const tagsOnly = node.tagName === "p" && tagLinks.length > 0 && node.children.every(child =>
+            (child.type === "text" && !child.value.trim()) || tagLinks.includes(child)
+            || (child.type === "element" && child.tagName === "br"))
+          if (tagsOnly) {
+            node.properties.className = ["body-tag-row"]
+            node.children = tagLinks
+          } else markTagRows(node)
+        }
+      }
+      markTagRows(tree)
       const tags = file.data.frontmatter?.tags
       const slug = file.data.slug
       if (!slug || !Array.isArray(tags) || tags.length === 0) return

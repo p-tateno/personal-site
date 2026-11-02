@@ -452,3 +452,29 @@ html body .center article table,
 html body .center article table :is(thead, tbody, tfoot, tr, th, td) {
   font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
 }
+
+// Hashtags written inside the note use the same compact pills.
+html body .center article a.tag-link {
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.2em 0.65em;
+  border: 0;
+  box-shadow: none;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--darkgray) 8%, transparent);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+html body .center article p.body-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-align: start;
+}
