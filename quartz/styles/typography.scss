@@ -478,3 +478,12 @@ html body .center article p.body-tag-row {
   gap: 0.5rem;
   text-align: start;
 }
+
+// Highlighted text follows the surrounding paragraph typography.
+html body .center article .text-highlight,
+html body .center article mark {
+  font-family: inherit !important;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit !important;
+}
