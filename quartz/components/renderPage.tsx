@@ -365,6 +365,12 @@ export function renderPage(
             ]}
           </Body>
         </div>
+        {/* Cloudflare Web Analytics */}
+        <script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"59c1e16e62594fa58c4696d5b8b2c59b"}'
+        ></script>
       </body>
       {pageResources.js
         .filter((resource) => resource.loadTime === "afterDOMReady")
