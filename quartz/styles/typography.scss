@@ -99,6 +99,8 @@ html[saved-theme="light"] body .sidebar.left .graph > .graph-outer {
 
 // 記事タイトルはテーマの基準サイズから20%拡大します。
 html body .center h1.article-title {
+  font-family: var(--font-interface, ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, sans-serif) !important;
+  font-weight: 700;
   font-size: calc(var(--inline-title-size, 1.75rem) * 1.2);
 }
 
