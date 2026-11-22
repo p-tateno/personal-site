@@ -1,6 +1,6 @@
 ---
 created: 2026-10-26
-cover: "[[PUBLIC/p-images/github.png]]"
+cover: "[[mTateno/p-images/github.png]]"
 tags:
   - GitHub
   - Obsidian
